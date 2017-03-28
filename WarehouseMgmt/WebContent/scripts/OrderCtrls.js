@@ -297,6 +297,16 @@ WMS
 							.then(function(response) {
 								$scope.warehouses = response.data;
 					});
+							
+							
+							/*$http
+							.get(
+									'/WarehouseMgmt/order/getOrderBetweenDates/1490293800000/1490639400000')
+							.then(function(response) {
+								$scope.ordersBtwnDates = response.data;
+								console.log($scope.ordersBtwnDates);
+					});*/
+							
 /*							$scope.pagination=function(){
 								console.log($scope.orders.length);
 								console.log(Math.ceil($scope.orders.length/5));

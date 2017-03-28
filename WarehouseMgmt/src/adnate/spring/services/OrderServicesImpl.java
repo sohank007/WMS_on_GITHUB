@@ -1,5 +1,6 @@
 package adnate.spring.services;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -112,8 +113,14 @@ public class OrderServicesImpl implements IOrderServices{
 	}
 
 	@Override
-	public List<Order> getOrdersBetweenDates(Date fromDate, Date toDate) {
-		return orderdao.getOrdersBetweenDates(fromDate,toDate);
+	public List<Object> getOrdersBetweenDates(long fromDate, long toDate) {
+		try {
+			return orderdao.getOrdersBetweenDates(fromDate, toDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 /*	@Override

@@ -79,14 +79,14 @@
       <!--    <md-content style="background-color:#104E8B;" flex> -->
 			<md-list flex style="height:100%;" ng-repeat="menu in rolemenus">
 			<!-- ng-repeat="menu in rolemenus" up anvoe in th sky -->
-			 <md-list-item flex ng-click="setRoute(menu.menuName)">
+ 			 <md-list-item flex ng-click="setRoute(menu.menuName)">
  					<md-icon md-svg-icon="{{menu.menuIcon}}" flex style="padding:0px;margin:0px;max-width: 60px;"></md-icon>
   					<label style="color: white;">{{menu.menuName}}</label>
             </md-list-item>
  						<!-- <md-list-item>
   							<a  ng-click="setRoute('/')" class="sidenavClass" ><md-icon md-svg-icon="scripts/svgImgs/inventory.svg"></md-icon>Warehouse Management</a>
  						</md-list-item>  -->
-			  			<!-- <md-list-item flex  ng-click="setRoute('inventoryDetails')">
+			  	<!-- 		 <md-list-item flex  ng-click="setRoute('inventoryDetails')">
   							<md-icon md-svg-icon="scripts/svgImgs/inventory.svg" flex 
   							style="padding:0px;margin:0px;max-width: 60px;"></md-icon>
   							<label style="color: white;">Inventory</label> 
@@ -130,7 +130,7 @@
  						<md-icon md-svg-icon="scripts/svgImgs/order1.svg" flex
   							style="padding:0px;margin:0px;max-width: 60px;"></md-icon>
   							<label style="color: white;">Role Menu Mapping</label>
-            			</md-list-item>  -->
+            			</md-list-item>   -->
  					
 			</md-list>
 	<!-- 		</md-content> -->

@@ -81,7 +81,7 @@ public class OrderController {
 
 			JSONObject order = jsonObject.getJSONObject("order");
 			System.out.println("JSON OBJ:" + order);
-			String orderDate = order.getString("orderDate");
+			//String orderDate = order.getString("orderDate");
 			int wId = order.getInt("warehouseId");
 			System.out.println("warehouse ID: " + wId);
 			int ctrId = order.getInt("contractorID");
@@ -90,14 +90,15 @@ public class OrderController {
 
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			/* String inDate=(String)jsonObject.get("inDate"); */
-			Date parsedDate = df.parse(orderDate);
+			/*Date parsedDate = df.parse(orderDate);
 			java.sql.Date sqlDate = new java.sql.Date(parsedDate.getTime());
 			System.out.println("parsed Date: " + parsedDate);
-			System.out.println("sqlDate: " + sqlDate);
-
+			System.out.println("sqlDate: " + sqlDate);*/
+			Date currentDate = new Date();
+			System.out.println("currentDate : " + currentDate);
 			Order orderPOJO = new Order();
 
-			orderPOJO.setOrderDate(sqlDate);
+			orderPOJO.setOrderDate(currentDate);
 			Warehouse warehouse = wrhService.findWarehouse(wId);
 			orderPOJO.setWarehouse(warehouse);
 			Contractor contractor = ctrService.findContractor(ctrId);
@@ -144,7 +145,7 @@ public class OrderController {
 				Material material = mtrlService.findMaterial(mtrlId);
 				orderDetailsPOJO.setMaterial(material);
 				orderDetailsPOJO.setOrderQty(orderQty);
-				orderDetailsPOJO.setIssuedDate(sqlDate);
+				orderDetailsPOJO.setIssuedDate(currentDate);
 				
 				orderDetailsPOJO.setInvoiceStatus("Delivered");
 
@@ -245,22 +246,50 @@ public class OrderController {
 	}
 	
 	
-	@RequestMapping(value="/getOrderBetweenDates/{fromDate}/{toDate}", method = RequestMethod.GET)
-	public ResponseEntity<List<Order>> getOrdersBetweenDates(@RequestParam(value="fromDate") @DateTimeFormat(iso=ISO.DATE) Date fromDate,
-			@RequestParam(value="toDate")@DateTimeFormat(iso=ISO.DATE) Date toDate){
-		List<Order> orderList = service.getOrdersBetweenDates(fromDate, toDate);
-		System.out.println("getOrderByOrgId() called");
+	@RequestMapping(value="/getOrderBetweenDates/{orderFromDate}/{orderToDate}", method = RequestMethod.GET, 
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Object>> getOrdersBetweenDates(@PathVariable("orderFromDate")  long fromDate,
+			@PathVariable("orderToDate") long toDate) throws ParseException {
+	    //DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+/*	    String fromDate1 = df.format(new Date(2017, 03, 24));
+	    String toDate1 = df.format(new Date(2017, 03, 28));
+	    System.out.println("fromdate1 ->" +  fromDate1);
+	    long lfromDate = Long.parseLong(fromDate1);
+	    System.out.println("lfromDate : " + lfromDate);
+	    long ltoDate = Long.parseLong(toDate1);
+	    System.out.println("ltoDate : " + ltoDate);*/
+		
+		/*String fromDate1="24-03-2017";
+		  DateFormat formatter ; 
+		  Date date ; 
+		  formatter = new SimpleDateFormat("dd-MM-yyyy");
+		  date = (Date)formatter.parse(fromDate1); 
+		  long longFromDate=date.getTime();
+		  System.out.println("From Date is " +longFromDate );
+		  
+		  
+		  String toDate1="28-03-2017";
+		  formatter = new SimpleDateFormat("dd-MM-yyyy");
+		  date = (Date)formatter.parse(toDate1); 
+		  long longToDate=date.getTime();
+		  System.out.println("To Date is " +longToDate );*/
+	    
+		fromDate = 1490293800000l;
+		toDate = 1490639400000l;
+		
+		List<Object> orderList = service.getOrdersBetweenDates(fromDate, toDate);
+		System.out.println("getOrdersBetweenDates() called");
 		if(orderList.isEmpty()){
-			System.out.println("MaterialListByOrgId is Empty");
+			System.out.println("orderListBtwnDates is Empty");
 			
-			return new ResponseEntity<List<Order>>(orderList, HttpStatus.OK);
+			return new ResponseEntity<List<Object>>(orderList, HttpStatus.OK);
 		}
-		for (Order order : orderList) 
+		for (Object order : orderList) 
 		{
 			//System.out.println(order.toString());
 		
 		}
-	return new ResponseEntity<List<Order>>(orderList, HttpStatus.OK);
+	return new ResponseEntity<List<Object>>(orderList, HttpStatus.OK);
 	
 	}
 	

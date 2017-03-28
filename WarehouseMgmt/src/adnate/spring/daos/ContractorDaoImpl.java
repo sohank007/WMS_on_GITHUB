@@ -82,4 +82,13 @@ public class ContractorDaoImpl implements ContractorDao{
 		}
 		return false;
 	}
+
+	@Override
+	public Contractor findCtrByMailId(String mailId) {
+		System.out.println("inside updateContractorByMailId() method");
+		Session hbSession = sFactory.getCurrentSession();
+		Contractor ctrObj =  (Contractor) hbSession.get(Contractor.class, mailId);
+		System.out.println("ctrObj : " + ctrObj);
+		return ctrObj;
+	}
 }

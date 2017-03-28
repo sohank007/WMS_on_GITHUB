@@ -1,5 +1,7 @@
 package adnate.spring.daos;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -226,14 +228,23 @@ public class OrderDaoImpl implements OrderDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Order> getOrdersBetweenDates(Date fromDate, Date toDate) {
+	public List<Object> getOrdersBetweenDates(long fromDate, long toDate) {
 		System.out.println("inside getOrdersBetweenDates() method");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		/*fromDate = 1490293800000l;
+		toDate = 1490639400000l;*/
+		
+		Date FDate = new Date(fromDate);
+		Date TDate = new Date(toDate);
+		
+		
+		// from date 24-03-2017 in long: 1490293800000
+		// to date 28-03-2017 in long : 1490639400000
 		Session hbSession = sFactory.getCurrentSession();
 		Query query = hbSession.createSQLQuery("SELECT * FROM ordermaster WHERE order_date BETWEEN "
-				+ " order_date=:fromDate AND order_date=:toDate")
-				.addEntity(Order.class);
-		query.setDate("fromDate", fromDate);
-		query.setDate("toDate", toDate);
+				+ " '2017-03-24' AND '2017-03-28' ");
+		query.setString("order_date", "2017-03-24");
+		query.setString("order_date", "2017-03-28");
 		return query.list();
 				
 	}

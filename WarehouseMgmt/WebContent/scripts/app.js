@@ -114,6 +114,7 @@ function($mdThemingProvider){
 WMS.run(function($http,AllFactory){
 	AllFactory.setOrganisationId("ORG-11");
 })
+
 // ++++++++++ ORIGINAL CODE AS IT IS +++++++++++++++++++++++++++++ // 
 
 /*
@@ -164,11 +165,12 @@ if(access_tokn){
 	var d = Date.new();
 }
 var datam=auth.currentUser();
-   if(!($window.localStorage['rolecode']))
+
+   if(!($window.localStorage['role']))
 	 {
 	   var datam=auth.currentUser();
 	   //console.log(datam);
-	   $window.localStorage['rolecode'] = datam.rolecode;
+	   $window.localStorage['role'] = datam.rolecode;
 	 }
   if(!($window.localStorage['useremail']))
 	  {
@@ -206,7 +208,7 @@ $window.location.href = $window.location.href.replace($window.location.search,''
 }
 else
 {
-$window.location.href = "http://192.168.100.19:1337/#/home";
+//$window.location.href = "http://192.168.100.19:1337/#/home";
 }
     }
  else
@@ -224,9 +226,9 @@ $window.location.href = "http://192.168.100.19:1337/#/home";
 
   $rootScope.$on('$routeChangeStart', function(event) {
     if (!auth.isLoggedIn()) {
-      console.log($window.location.href.split("/")[4].length);
+      console.log($window.location.href.split("?")[4].length);
       
-      if($window.location.href.split("/")[4].length>1)
+      if($window.location.href.split("?")[4].length>1)
       {
       $window.location.href = "http://192.168.100.19:1337/";
       }
@@ -237,9 +239,9 @@ $window.location.href = "http://192.168.100.19:1337/#/home";
 
 
 });
+
+
 */
-
-
 
 
 

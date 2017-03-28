@@ -1,5 +1,6 @@
 package adnate.spring.daos;
 
+import java.text.ParseException;
 import java.util.Date;
 //import java.util.ArrayList;
 import java.util.List;
@@ -38,5 +39,5 @@ public interface OrderDao {
 	
 	public List<Order> getOrderByOrgId(String organisationId);
 	
-	public List<Order> getOrdersBetweenDates(Date fromDate, Date toDate);
+	public List<Object> getOrdersBetweenDates(long fromDate, long toDate) throws ParseException;
 }
