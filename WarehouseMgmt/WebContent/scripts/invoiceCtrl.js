@@ -151,7 +151,7 @@ console.log("aa"+$scope.taxes);
           		   controller: function($scope, $mdDialog,$window){
           		      $scope.closeDialog = function(){
           		       $mdDialog.hide();
-          		 	$window.location.href="#!/viewInvoice";
+          		 	$window.location.href="#!/Invoice";
           		     };
           		   },
           		  
@@ -162,7 +162,7 @@ console.log("aa"+$scope.taxes);
 		
 	}
 	$scope.cancel=function(){
-		$window.location.href="#!/ViewOrder";
+		$window.location.href="#!/Order";
 	}
 	
 /*
@@ -247,7 +247,7 @@ wms.controller("viewInvoiceDetailsCtrl",["$http","$scope","AllFactory",'$window'
 			});
 	
 	$scope.back=function(){
-		$window.location.href="#!/viewInvoice";
+		$window.location.href="#!/Invoice";
 	}
 
 /*	$scope.downloadPDF= function(){

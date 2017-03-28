@@ -45,8 +45,21 @@ public class ContractorController {
 	}
 	
 	
-	@RequestMapping(value="/contractorByMailId/{mailId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody boolean updateContractorByMailId(@PathVariable("mailId") String mailId) {
+	@RequestMapping(value="/contractorByMailId/{contractor_email}", method = RequestMethod.GET, consumes="Application/Json")
+	public @ResponseBody boolean updateContractorByMailId(@PathVariable("contractor_email") String contractor_email) {
+		System.out.println("mailD : " + contractor_email);
+ 		Contractor ctr = service.findCtrByMailId(contractor_email);
+		if(ctr!=null){
+			System.out.println("ctrNull" + ctr);
+			return false;
+		}
+		return true;
+	}
+	
+	
+	@RequestMapping(value= "/contractorId/{mailId}", method = RequestMethod.GET, consumes="Application/Json")
+	public @ResponseBody boolean updateMailID(@PathVariable("mailId") String mailId) {
+		System.out.println("mailD : " + mailId);
 		boolean updateStatus = service.updateContractorByMailId(mailId);
 		System.out.println("updateContractorByMailId() called");
 		if(updateStatus==false){
@@ -54,18 +67,13 @@ public class ContractorController {
 			return false;
 		}
 		return true;
-/*		if(ctrList.isEmpty()){
-			System.out.println("getContractorByMailId is Empty");
-			
-			return new ResponseEntity<List<Contractor>>(ctrList, HttpStatus.OK);
-		}
-		for (Contractor ctr : ctrList) 
-		{
-			System.out.println(ctr.toString());
-		
-		}
-	return new ResponseEntity<List<Contractor>>(ctrList, HttpStatus.OK);*/			
 	}
+	
+	/*@RequestMapping(value="/contractorId/{mailId}", method=RequestMethod.GET, consumes="Application/Json")
+	public @ResponseBody boolean updateStatus(@PathVariable("mailId") String mailId) {
+		System.out.println("mailId"+mailId);
+		return true;
+	}*/
 	
 
 	@RequestMapping("/contractorDetails")

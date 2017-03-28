@@ -56,7 +56,7 @@ public class InwardController {
 			JSONObject jsonObject = new JSONObject(json);
 
 			JSONObject inward = jsonObject.getJSONObject("inward");
-			    String inDate=inward.getString("inDate");
+			    //String inDate=inward.getString("inDate");
 			    int wId=inward.getInt("warehouseId");
 			    System.out.println("wId:" +wId);
 			    String orgId= inward.getString("organisationId");
@@ -64,14 +64,18 @@ public class InwardController {
 			    System.out.println("inwardObj:"+inward);
 			    
 			    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			    String fromDate = df.format(new Date(2017, 03, 24));
 				/*String inDate=(String)jsonObject.get("inDate");*/
-				Date parsedDate = df.parse(inDate);
+/*				Date parsedDate = df.parse(inDate);
 				java.sql.Date sqlDate = new java.sql.Date(parsedDate.getTime()); 
 			    System.out.println("parsed Date: " + parsedDate);
-			    System.out.println("sqlDate: " + sqlDate);
+			    System.out.println("sqlDate: " + sqlDate);*/
+			    
+			    Date currentDate = new Date();
+			    System.out.println("currentDate: " + currentDate);
 			    
 			    Inward inwardPOJO = new Inward();
-			    inwardPOJO.setInDate(sqlDate);
+			    inwardPOJO.setInDate(currentDate);
 			    Warehouse w = service2.findWarehouse(wId);
 			    System.out.println("wrhobj:" +w);
 			    inwardPOJO.setWarehouse(w);

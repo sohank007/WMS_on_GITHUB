@@ -127,7 +127,7 @@ WMS.controller('AddMaterialCtrl',['$scope','$http','$window','$mdDialog','AllFac
         $scope.f = file;
         if (file) {
             Upload.upload({
-                url: 'http://192.168.100.6:1339/users/materialUpload',
+                url: 'http://192.168.100.3:1339/users/materialUpload',
                 data: {
                     file: file
                 }
@@ -137,7 +137,7 @@ WMS.controller('AddMaterialCtrl',['$scope','$http','$window','$mdDialog','AllFac
                 	console.log(response.data);
                     $scope.material.materialImage =($scope.result.path).split('Material\\')[1];
                     console.log($scope.material.materialImage);
-                    $scope.image="http://192.168.100.6:1339/"+$scope.material.materialImage;
+                    $scope.image="http://192.168.100.3:1339/"+$scope.material.materialImage;
                     console.log($scope.image);
                     $scope.imagevisible=true;
                 });

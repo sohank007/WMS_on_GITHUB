@@ -14,4 +14,6 @@ public interface IContractorServices {
 	public List<Contractor> getContractorByOrgId(String organisationId);
 	
 	public boolean updateContractorByMailId(String mailId);
+	
+	public Contractor findCtrByMailId(String mailId);
 }

@@ -32,6 +32,6 @@ public interface IOrderServices {
 	
 	public List<Order> getOrderByOrgId(String organisationId);
 	
-	public List<Order> getOrdersBetweenDates(Date fromDate, Date toDate);
+	public List<Object> getOrdersBetweenDates(long longFromDate, long longToDate);
 	
 }

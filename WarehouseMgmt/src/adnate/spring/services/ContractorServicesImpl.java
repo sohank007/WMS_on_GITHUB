@@ -50,4 +50,9 @@ public class ContractorServicesImpl implements IContractorServices{
 	public boolean updateContractorByMailId(String mailId) {
 		return contractordao.updateContractorByMailId(mailId);
 	}
+
+	@Override
+	public Contractor findCtrByMailId(String mailId) {
+		return contractordao.findCtrByMailId(mailId);
+	}
 }

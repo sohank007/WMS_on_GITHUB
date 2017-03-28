@@ -120,7 +120,7 @@ function auth ($http, $window) {
 	    }
 
   var isLoggedIn = function() {
-  	 //debugger;
+  	 debugger;
        var token = getToken();
        //var org_id = getOrganisationId();
        var payload;
@@ -138,7 +138,7 @@ function auth ($http, $window) {
   };
 
   var currentUser = function() {
-  	debugger;
+  	//debugger;
   	 if(isLoggedIn()){
   	        var token = getToken();
   	        console.log(token);
@@ -152,7 +152,6 @@ function auth ($http, $window) {
           name : payload.name,
           _orgName : payload._orgName,
           _orgId : payload._orgId,
-           role : payload._role
       };
     }
   };
@@ -182,15 +181,18 @@ function auth ($http, $window) {
 
   return {
       currentUser : currentUser,
-      
       saveToken : saveToken,
       getToken : getToken,
+      getOrganisationId : getOrganisationId,
+      saveorganisationId : saveorganisationId,
+      saveRole : saveRole,
+      getRole : getRole,
       isLoggedIn : isLoggedIn
       
     };
 }
-*/
 
+*/
 
 
 // ++++++ CODE FROM APP JS TO ALLFACTORY PASTED +++++++++++++++++
