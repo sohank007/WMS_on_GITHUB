@@ -1,0 +1,373 @@
+md-sidenav.md-locked-open
+{
+    width: 250px;
+    min-width: 100px;
+    max-width: 250px;	
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+md-select {
+    padding: 0px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+} 
+
+.well {
+    min-height: 20px;
+    padding: 19px;
+/*     margin-bottom: 20px; */
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+div {
+    display: block;
+}
+
+.AddContractorClass md-input-container
+{
+		padding: 10px 0px 10px; 
+}
+.AddWarehouseClass md-input-container
+{
+		padding: 10px 0px 10px; 
+}
+.AddInwardClass  md-input-container > md-select
+{
+	padding:0px 0px; 	
+	width: 100%;
+}
+
+.AddInwardClass md-input-container
+{
+	padding-bottom: 0px;
+}
+.AddOrderClass  md-input-container > md-select
+{
+	padding: 0px 0px 0px; 	
+	width: 150px;
+}
+
+.AddOrderClass md-input-container
+{
+	padding-bottom: 0px;
+	margin:0px;
+}
+
+.show  md-input-container > md-select
+{
+	padding: 22px 0px 0px; 	
+}
+
+.show md-input-container
+{
+	padding-bottom: 0px;
+}
+
+.AddMaterialClass label
+{
+	color:gray;
+	
+}
+
+.AddContractorClass label
+{
+	color:gray;
+	
+}
+ .AddWarehouseClass label
+ {
+	color:gray;
+	
+}
+
+md-input-container .md-input[disabled], [disabled] md-input-container .md-input
+{
+	color: rgba(0,0,0,0.26); 
+
+}
+
+  a{
+		text-decoration:none;
+		color: gray;
+
+ }
+ .sidenavClass {
+ 	color: white;	
+ 	align:cetre;
+ 	outline:none;
+ 	border:0px;
+ 	padding:20px 20px;
+ 	}
+
+
+table.table {
+	border: 1px solid #DCDCDC;
+    border-collapse: collapse;
+    width: 100%;
+    overflow:auto; 
+}
+/* table.table td{
+	text-align: left;
+}
+
+table.table th{
+	text-align: left;
+} */
+
+th, td{
+
+	    border-collapse: collapse;
+	    text-align:center;
+	    padding: 10px;
+/*     	border-bottom: 1px solid #ddd; */
+}
+th{
+	    padding-top: 12px;
+    	padding-bottom: 12px;
+		color: gray;
+		background-color:#DCDCDC;
+}
+
+
+tr.tr:nth-child(even){background-color: #DCDCDC;}
+
+tr.tr:hover{background-color:#ddd}
+
+md-sidenav{
+		 width:15%;
+		 min-width:25%;
+    	 background-color:#104E8B;
+    	 height:100%;
+}
+md-icon {
+
+    height: 20px;
+    width: 20px;
+}
+
+md-toolbar.md-hue-2{
+	background-color: #1874CD;
+	width:100%;
+}
+
+.dashboardClass md-input-container{
+	padding:10px 0px 0px;
+}
+
+
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+input[type="checkbox"]{
+  width: 15px; /*Desired width*/
+  height: 15px; /*Desired height*/
+}
+
+
+table.invoiceDetClass th{
+	text-align: right;
+	font-size: medium;
+	width: 25%;
+	padding:5px 5px;
+	border-bottom:1px solid #ddd;
+		padding-right: 10px;
+}
+
+
+table.invoiceDetClass td{
+	text-align: right;
+	font-size: medium;
+	width: 25%;
+	padding:5px 5px;
+	border-bottom:1px solid #ddd;
+
+}
+
+table.totalClass td{
+		text-align: right;
+		font-size: small;
+		width:25%;
+		padding:5px 5px;
+
+}
+table.totalClass{
+			border-spacing: 0px;
+			margin:10px auto;
+			padding:10px 20px;
+			width:90%;
+			height:auto;  
+}
+
+
+table.invoiceClass td{
+		text-align:left;
+		font-size: medium;
+		padding:5px 10px;
+		width:25%;
+
+}
+
+table.invoiceClass{
+			border-spacing: 0px;
+			margin:10px auto;
+			padding:10px 20px;
+			width:90%;
+			height:auto; 
+
+}
+
+
+table.invoiceDetClass{
+	width:90%;
+	height:auto;  
+	border-spacing: 0px;
+	margin:10px auto;
+	padding:10px 20px;
+
+}
+
+input[type=text].NormalInput{
+    width: 150px;
+    box-sizing: border-box;
+    border:none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;	
+}
+input[type=text]:focus.NormalInput{
+    width: 70%;
+}
+
+h2{
+	padding:5px auto;
+	margin:0px;
+	text-align: left;
+	color: gray;
+	
+}
+input#discount:AFTER{
+	background-color: white;
+
+}
+
+input[type="number"]:disabled{
+	background-color: white;
+
+}
+input#orderDate:disabled,input#unitMeasure:disabled,input#availQty:disabled{
+		background-color: white;
+		width:150px;
+}
+md-select[disabled] .md-select-label,md-select[disabled] {
+    color: black;
+}
+input{
+	border:none;
+	border-bottom: 1px solid lightgray;
+}
+input:FOCUS {
+		border:none;
+		outline:none;
+	border-bottom: 1px solid lightgray;
+}
+
+.md-toolbar-tools{
+	    max-height: 100px;
+}
+
+
+md-input-container {
+    display: table-cell;
+    position: relative;
+    padding: 2px;
+    margin: 20px 10px;
+    vertical-align: baseline;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+
+.md-button{
+	
+	    max-height: 10px;
+	    
+}
+.sort-icon {
+    font-size: 9px;
+    margin-left: 5px;
+}
+
+th {
+    cursor:pointer;
+}
+
+
+input#invoiceDate:disabled{
+text-align: right;
+width: 100px;	
+}
+
+.md-datepicker-input{
+	text-align:right;
+	margin-right: 20px;
+	width: 70px;
+    min-width: 70px;
+}
+md-select[disabled] .md-select-value{
+	width:150px;
+}
+md-dialog#addmaterial {
+    min-width: 550px;
+    max-width: 550px;
+    max-height: 400px;
+    min-height: 400px;
+}
+
+md-dialog#addwarehouse {
+    min-width: 550px;
+    max-width: 550px;
+    max-height: 400px;
+    min-height: 400px;
+}
+
+md-dialog#addContractor{
+	min-width: 550px;
+    max-width: 550px;
+    max-height: 400px;
+    min-height: 400px;
+}
+md-dialog#addInward{
+	min-width: 550px;
+    max-width: 550px;
+    min-height: 300px;
+    height: auto;
+}
+
+
+.pagination>li>a, .pagination>li>span{
+	padding: 3px 10px;
+}
