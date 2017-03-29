@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+		
+<context:component-scan base-package="adnate.spring" />	
+	<mvc:annotation-driven/>
+	<mvc:resources mapping="/scripts/**" location="/scripts/"
+	cache-period="31556926"/>
+	<mvc:resources mapping="/pages/**" location="/pages/"/>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="sohan.khoche@adnatesolutions.com" />
+		<property name="password" value="Sohan@cordys" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- max upload size in bytes -->
+        <property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
+         
+        <!-- max size of file in memory (in bytes) -->
+        <property name="maxInMemorySize" value="1048576" /> <!-- 1MB --> 
+    </bean>  
+	
+
+	<bean id="mysqlDataSrc" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/wmsinfo"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
+
+	<bean id="mysqlSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="mysqlDataSrc"/>
+		<property name="packagesToScan" value="adnate.spring.pojos"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.create">true</prop>
+			</props>
+		</property>
+	</bean>	
+	
+	<bean id="txMgr" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mysqlSessionFactory"/>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="txMgr"/>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="prefix" value="/"/>
+		<property name="suffix" value=".jsp"/>
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+	</bean>
+	
+	<bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+	<bean id="xmlConverter" class="org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter"/>
+	   
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jsonConverter"/>
+                <ref bean="xmlConverter"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

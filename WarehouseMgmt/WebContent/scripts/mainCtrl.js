@@ -12,7 +12,7 @@ wms.controller('mainCtrl',['$http','$scope','$location','$mdSidenav',"$mdColorPa
 	
 	
 	
-	$http.get('/WarehouseMgmt/roleMenu/roleMenuByOrgIdRoleCode/ADM')
+	$http.get('/WarehouseMgmt/roleMenu/roleMenuByOrgIdRoleCode/WHM')
     .then(function(response){
     $scope.rolemenus=response.data;
     console.log($scope.rolemenus); 
